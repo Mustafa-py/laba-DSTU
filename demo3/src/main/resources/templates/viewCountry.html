@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List</title>
+</head>
+<body>
+<div align="center">
+  <a href="/newCountry"> Добавить страну </a>
+
+  <form action="#" th:action="@{/DeleteCountries}" th:object="${deleteCountryForm}" method="get">
+    <table border="1">
+      <thead>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="country : ${listCountries}">
+
+        <td>
+          <input type="checkbox" th:field="*{countries}" th:value="${country.id}" />
+        </td>>
+
+        <td th:text="${country.id}">ID</td>
+        <td>
+          <label th:for="${#ids.next('countries')}"  th:text="${country.name}"/>
+        </td>
+        <td>
+          <a th:href="@{'/EditCountry/' + ${country.id}}">Edit</a>
+          &nbsp;&nbsp;
+          <a th:href="@{'/DeleteCountry/' + ${country.id}}">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <input type="submit" name="submitButton" value="Удалить выделенное" />
+  </form>
+</div>
+</body>
+
+</html>
