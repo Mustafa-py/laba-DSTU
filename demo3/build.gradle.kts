@@ -20,6 +20,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation ("org.springframework.boot:spring-boot-starter-security")
+	//  Temporary explicit version to fix Thymeleaf bug
+	implementation ("org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE")
+	implementation ("org.springframework.security:spring-security-test")
 }
 
 tasks.withType<Test> {
